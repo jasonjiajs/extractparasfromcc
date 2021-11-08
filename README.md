@@ -17,9 +17,6 @@ Repo structure (not ideal, but wanted to get this out asap)"
 Change your directory on the python file, namely the following code (may be mac rather than windows for you): 
 
 ```
-homepath = str(Path.home())
-print("The home path detected is {}.".format(homepath))
-
 if r"C:\Users" in homepath:
     windows = True
     print("Detected Windows home path - using Jason's Dropbox folders")
@@ -29,3 +26,5 @@ if r"C:\Users" in homepath:
 ```
 
 Hopefully the code should run!
+
+The output will be TotalCircnew.xlsx in \extractparasfromcc\Output\KeywordIdentification\Test Set of 50 Group Folders. I've named mine as TotalCircnew_myoutput.xlsx as comparison.
