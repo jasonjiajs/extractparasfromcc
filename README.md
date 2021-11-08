@@ -16,6 +16,7 @@ Repo structure (not ideal, but wanted to get this out asap)"
 
 Change your directory on the python file, namely the following code (may be mac rather than windows for you): 
 
+```
 homepath = str(Path.home())
 print("The home path detected is {}.".format(homepath))
 
@@ -25,5 +26,6 @@ if r"C:\Users" in homepath:
     os.chdir(r"C:\Users\jasonjia\Dropbox\Projects\extractparasfromcc\Output\KeywordIdentification\Test Set of 50 Group Folders")
     csv_dir1 = r"C:\Users\jasonjia\Dropbox\Projects\extractparasfromcc\Output\ConferenceCall\Csv"
     keyterms_filepath = r"C:\Users\jasonjia\Dropbox\Projects\extractparasfromcc\Output\KeywordIdentification\keyterms\keyterms.txt"
-   
+```
+
 Hopefully the code should run!
