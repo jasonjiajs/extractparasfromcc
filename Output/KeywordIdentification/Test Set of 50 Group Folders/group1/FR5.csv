@@ -1,0 +1,14 @@
+Date,Report,Keywords,Cri1,File,Cri2,Cri3,Cri4
+2020-10-01,70487580.0,interest rate,1.0,20201001-20201004_1.csv,True,False,False
+2020-10-01,70486735.0,interest rate,1.0,20201001-20201004_1.csv,False,False,False
+2020-10-01,70487273.0,discount rate,1.0,20201001-20201004_1.csv,False,False,False
+2020-10-01,70488559.0,cost of debt,1.0,20201001-20201004_1.csv,True,False,False
+2020-10-01,70486599.0,return on invested capital,1.0,20201001-20201004_1.csv,True,False,False
+2020-10-01,70486599.0,irr,1.0,20201001-20201004_1.csv,True,False,False
+2020-10-01,70488207.0,irr,1.0,20201001-20201004_1.csv,False,False,False
+2020-10-01,70489054.0,occ,1.0,20201001-20201004_1.csv,False,False,False
+2020-10-01,70488559.0,occ,1.0,20201001-20201004_1.csv,False,False,False
+2020-10-01,70486677.0,occ,1.0,20201001-20201004_1.csv,True,False,False
+2020-10-01,70487360.0,occ,1.0,20201001-20201004_1.csv,True,False,False
+2020-10-01,70487355.0,occ,1.0,20201001-20201004_1.csv,False,False,False
+2020-10-01,70488831.0,occ,1.0,20201001-20201004_1.csv,False,False,False
