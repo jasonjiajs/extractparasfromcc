@@ -20,7 +20,7 @@ def alt_keywords_from_one_call(row, keywords, clean = True):
     
     # This is an imperfect split, sometimes it breaks in the middle of a sentence
     call = str(row["Call"])
-    paras_list = re.split(r"\n\s*\n+", call)
+    paras_list = [t.replace("\n"," ") for t in re.split(r"\n\s*\n+", call) if len(t)>0 and not re.match(r"^\s*[0-9]+$",t)]
     found_keywords, found_in_paras = [], []
 
     report_id = row["Report"]
@@ -33,6 +33,27 @@ def alt_keywords_from_one_call(row, keywords, clean = True):
                 found_in_paras.append(para)
     
     return pd.DataFrame({"Keyword": found_keywords, "Para": found_in_paras, "Report": report_id})
+
+def has_numbers(inputString):
+    return bool(re.search(r'\d', inputString))
+
+def extractNumbers(text):
+    digits = re.findall(r"[(\d.)]+", text)
+    digits = [i for i in digits if i != "."]
+    return digits
+
+def check_n_prev_and_next(p1, p2, k, n = 5):
+    inverted_n = n * -1 ### Good for indexing purposes
+    start = p1.index(k)
+    end = start + len(k)
+    p1_start_chunk, p1_end_chunk = p1[:start], p1[end:]
+    p2_start_chunk, p2_end_chunk = p2[:start], p2[end:]
+    p1_preceding_n_words, p2_preceding_n_words = " ".join(p1_start_chunk.split()[inverted_n:]), " ".join(p2_start_chunk.split()[inverted_n:])
+    p1_succeding_n_words, p2_succeding_n_words = " ".join(p1_end_chunk.split()[:n]), " ".join(p2_end_chunk.split()[:n])
+    if (p1_preceding_n_words == p2_preceding_n_words) and (p1_succeding_n_words == p2_succeding_n_words):
+        return True
+    else:
+        return False
 
 def main():
     keywords_df = pd.read_csv("CriCount/keyterms.txt", sep = "\t", header = None)
@@ -55,6 +76,8 @@ def main():
             unclean_data = pd.concat(dfs_list).reset_index(drop = True)
             #unclean_data = unclean_data.merge(cc_df, on = "Report", how = "left")
             unclean_data["File"] = file
+            unclean_data["HasNumber"] = unclean_data["Para"].apply(has_numbers)
+            unclean_data["ExtractedNumbers"] = unclean_data["Para"].apply(extractNumbers)
             #output_fp = "CriCount/Identified_Keywords/{}".format(file_fp)
             outdir = "CriCount/Identified_Keywords/group{}".format(folder_num)
             if not os.path.exists(outdir):
