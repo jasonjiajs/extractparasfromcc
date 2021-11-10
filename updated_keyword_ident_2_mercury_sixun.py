@@ -80,8 +80,8 @@ def keyw_iden(keywords,sent):
 def num_iden(string):
     total_length = 0
     num_length = 0
-    if "%" not in string:
-        return False
+    #if "%" not in string:
+    #    return False
     for char in string:
         if char not in '!%()*+,-./:;<=>?@[\\]^_`{|}~':
             total_length +=1
@@ -161,10 +161,10 @@ def save_paragraph(keyword,call_script,check_len):
     c_script = sent_tokenize(para_recon)
     for i in range(len(c_script)):
             check_sent = c_script[i]
-        #iden_status = False
-        #if check_len == 1:
-        #    if identify_cost(check_sent,keyword,False):
-        #        iden_status = True
+        iden_status = False
+        if check_len == 1:
+            if identify_cost(check_sent,keyword,False):
+                iden_status = True
         #elif check_len == 2:
         #    if identify_cost(check_sent,keyword,True):
         #        iden_status = True            
