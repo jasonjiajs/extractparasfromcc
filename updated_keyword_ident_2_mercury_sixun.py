@@ -203,6 +203,7 @@ for i in range(samples_call.shape[0]):
     file_name = samples_call.loc[i]["File"]
     report_num = samples_call.loc[i]["Report"]
     check_len = int(samples_call.loc[i]["Type"].replace("Cri",""))
+    reports = []
     
     filepathfound = False
     csv_dir_filepath = csv_dir1 + r"/" + file_name
@@ -231,10 +232,12 @@ for i in range(samples_call.shape[0]):
         para_example.append(paragraph)
         name.append(title)
         subtitle.append(sub_title)
+        reports.append(report_num)
 
 samples_call["Title"] = name
 samples_call["Subtitle"] = subtitle
 samples_call["Paragraph"] = para_example
+samples_call["Report"] = reports
 
 # %%
 ### save output ####
